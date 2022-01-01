@@ -14,15 +14,19 @@ from tmdb_api import TmdbApi
 import os
 
 
-async def print_movie(api: TmdbApi, movie_id: int):
+async def get_m(api: TmdbApi, movie_id: int):
     movie = await api.movie(movie_id)
-    print(f"{movie['title']:30s} {movie['tagline']}")
 
 
 async def main():
     api = TmdbApi(os.environ["API_KEY"])
+
     movie_ids = [500, 234, 600]
-    await asyncio.gather(*[print_movie(api, movie_id) for movie_id in movie_ids])
+
+    movies = await asyncio.gather(*map(api.movie, movie_ids))
+
+    for i, movie in enumerate(movies):
+        print(f"{i+1:2} | {movie['title']:30} ({movie['tagline']})")
 
 
 if __name__ == "__main__":
@@ -31,3 +35,10 @@ if __name__ == "__main__":
 
     asyncio.run(main())
 ```
+
+```
+# output of example.py
+ 1 | Reservoir Dogs                 (Every dog has his day.)
+ 2 | The Cabinet of Dr. Caligari    (You must become Caligari!)
+ 3 | Full Metal Jacket              (Vietnam can kill me, but it can’t make me care.)
+ ```
