@@ -3,10 +3,6 @@ from tmdb_api import TmdbApi
 import os
 
 
-async def get_m(api: TmdbApi, movie_id: int):
-    movie = await api.movie(movie_id)
-
-
 async def main():
     api = TmdbApi(os.environ["API_KEY"])
 
