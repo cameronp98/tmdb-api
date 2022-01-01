@@ -1,13 +1,5 @@
 import asyncio
-from api import Api
-
-
-class TmdbApi(Api):
-    def __init__(self, api_key: str, language: str = "en-GB"):
-        super().__init__("api.themoviedb.org", api_key=api_key, prepath="3/", language="en-GB")
-
-    async def movie(self, movie_id: int) -> dict:
-        return await self.get(f"movie/{movie_id}")
+from tmdb_api import TmdbApi
 
 
 async def print_movie(api: TmdbApi, movie_id: int):
@@ -22,7 +14,7 @@ async def main():
 
 
 if __name__ == "__main__":
-    # see https://stackoverflow.com/a/66772242
+    # avoids windows specific issue, see https://stackoverflow.com/a/66772242
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
     asyncio.run(main())
