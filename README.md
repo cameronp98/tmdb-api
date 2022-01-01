@@ -37,8 +37,9 @@ if __name__ == "__main__":
 ```
 
 ```
-# output of example.py
- 1 | Reservoir Dogs                 (Every dog has his day.)
- 2 | The Cabinet of Dr. Caligari    (You must become Caligari!)
- 3 | Full Metal Jacket              (Vietnam can kill me, but it can’t make me care.)
- ```
+Output of example.py:
+
+1 | Reservoir Dogs                 (Every dog has his day.)
+2 | The Cabinet of Dr. Caligari    (You must become Caligari!)
+3 | Full Metal Jacket              (Vietnam can kill me, but it can’t make me care.)
+```
